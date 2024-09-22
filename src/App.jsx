@@ -1,17 +1,17 @@
 import './App.css'
-import { UserProvider } from './contexts/UserContext'
-import  UserProfile  from './components/UserProfile'
-import  UserInput  from './components/UserInput'
+import { ThemeProvider } from './contexts/ThemeContext'
+import ThemeToggle from './components/ThemeToggle'
+import ThemedBox from './components/ThemedBox'
 
 function App() {
   return (
-    <UserProvider>
+    <ThemeProvider>
       <div style={{ textAlign: 'center', marginTop: '50px' }}>
-        <h1>Bienvenido</h1>
-        <UserProfile />
-        <UserInput />
+        <h1>Clickea el boton para ver el cambio de tema</h1>
+        <ThemeToggle />
+        <ThemedBox />
       </div>
-    </UserProvider>
+    </ThemeProvider>
   )
 }
 
