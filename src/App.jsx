@@ -2,37 +2,40 @@ import './App.css'
 import { useState, useEffect } from 'react'
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  const handleIncrement = () => {
-    setCount(count + 1)
-  }
-
-  const handleDecrement = () => {
-    setCount(count - 1)
-  }
+  const [users, setUsers] = useState([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    document.title = `Contador: ${count}`;
-  }, [count]);
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then(data => {
+        setUsers(data)
+        setLoading(false)
+      })
+      .catch(error => {
+        console.error('Error al obtener los usuarios:', error)
+        setLoading(false)
+      })
+  }, [])
 
   return (
-    <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <h1>Contador: {count}</h1>
+    <div style={{ padding: '20px' }}>
+      <h1>Lista de Usuarios</h1>
 
-      <button
-        onClick={handleIncrement}
-        style={{ padding: '10px 20px', marginRight: '10px', fontSize: '16px' }}
-      >
-        Aumentar
-      </button>
-
-      <button
-        onClick={handleDecrement}
-        style={{ padding: '10px 20px', fontSize: '16px' }}
-      >
-        Disminuir
-      </button>
+      {/* Mostrar mensaje de carga mientras se obtienen los datos */}
+      {loading ? (
+        <p>Cargando usuarios...</p>
+      ) : (
+        <ul>
+          {/* Renderizar cada usuario en una lista */}
+          {users.map(user => (
+            <li key={user.id} style={{ marginBottom: '15px', listStyle: 'none' }}>
+              <strong>Nombre de usuario:</strong> {user.username} <br />
+              <strong>Email:</strong> {user.email}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   )
 }
