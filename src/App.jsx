@@ -1,5 +1,5 @@
 import './App.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -12,19 +12,23 @@ function App() {
     setCount(count - 1)
   }
 
+  useEffect(() => {
+    document.title = `Contador: ${count}`;
+  }, [count]);
+
   return (
     <div style={{ textAlign: 'center', marginTop: '50px' }}>
       <h1>Contador: {count}</h1>
 
-      <button 
-        onClick={handleIncrement} 
+      <button
+        onClick={handleIncrement}
         style={{ padding: '10px 20px', marginRight: '10px', fontSize: '16px' }}
       >
         Aumentar
       </button>
 
-      <button 
-        onClick={handleDecrement} 
+      <button
+        onClick={handleDecrement}
         style={{ padding: '10px 20px', fontSize: '16px' }}
       >
         Disminuir
