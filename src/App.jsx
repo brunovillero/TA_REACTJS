@@ -1,22 +1,34 @@
 import './App.css'
 import { useState } from 'react'
-import Input from './components/Input.jsx'
 
 function App() {
-  const [inputValue, setInputValue] = useState('')
+  const [count, setCount] = useState(0)
 
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value)
+  const handleIncrement = () => {
+    setCount(count + 1)
+  }
+
+  const handleDecrement = () => {
+    setCount(count - 1)
   }
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h2>Introduce el texto a mostrar:</h2>
-      <Input value={inputValue} onChange={handleInputChange} />
+    <div style={{ textAlign: 'center', marginTop: '50px' }}>
+      <h1>Contador: {count}</h1>
 
-      <p style={{ marginTop: '20px' }}>
-        <strong>Texto ingresado:</strong> {inputValue}
-      </p>
+      <button 
+        onClick={handleIncrement} 
+        style={{ padding: '10px 20px', marginRight: '10px', fontSize: '16px' }}
+      >
+        Aumentar
+      </button>
+
+      <button 
+        onClick={handleDecrement} 
+        style={{ padding: '10px 20px', fontSize: '16px' }}
+      >
+        Disminuir
+      </button>
     </div>
   )
 }
