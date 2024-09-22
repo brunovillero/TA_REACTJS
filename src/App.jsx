@@ -2,33 +2,26 @@ import './App.css'
 import { useState } from 'react'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [isTextVisible, setIsTextVisible] = useState(false)
 
-  const handleIncrement = () => {
-    setCount(count + 1)
-  }
-
-  const handleDecrement = () => {
-    setCount(count - 1)
+  const toggleTextVisibility = () => {
+    setIsTextVisible(!isTextVisible)
   }
 
   return (
     <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <h1>Contador: {count}</h1>
-
-      <button 
-        onClick={handleIncrement} 
-        style={{ padding: '10px 20px', marginRight: '10px', fontSize: '16px' }}
-      >
-        Aumentar
-      </button>
-
-      <button 
-        onClick={handleDecrement} 
+      <button
+        onClick={toggleTextVisibility}
         style={{ padding: '10px 20px', fontSize: '16px' }}
       >
-        Disminuir
+        {isTextVisible ? 'Ocultar texto' : 'Mostrar texto'}
       </button>
+
+      {isTextVisible && (
+        <p style={{ marginTop: '20px', fontSize: '18px' }}>
+          ¡Este es el texto que puedes mostrar u ocultar!
+        </p>
+      )}
     </div>
   )
 }
