@@ -1,4 +1,4 @@
-.Home, .Contact, .About {
+.Home, .Product {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,10 +12,6 @@
     background-color: rgb(131, 192, 91);
 }
 
-.Contact {
-    background-color: rgb(100, 0, 215);
-}
-
-.About {
+.Product {
     background-color: rgb(255, 215, 0);
 }
