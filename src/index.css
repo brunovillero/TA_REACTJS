@@ -1,4 +1,4 @@
-.Home, .Product {
+.Login, .Dashboard {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,10 +8,34 @@
   color: rgb(0, 0, 0);
 }
 
-.Home {
+.Login {
     background-color: rgb(131, 192, 91);
+    width: 600px;
+    height: 600px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
 }
 
-.Product {
+.Login input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 5px rgb(0, 0, 0);
+}
+
+.Login button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+
+.Dashboard {
     background-color: rgb(255, 215, 0);
 }
